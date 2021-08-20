@@ -15,14 +15,26 @@ namespace Plataform_CPF.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Acerca de ......";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Esta es tu pagina de contacto";
+
+            return View();
+        }
+
+        public ActionResult Aviso()
+        {
+            return View();
+        }
+
+        public ActionResult Bienvenido()
+        {
+            ViewBag.Message = "SEA USTDE BIENVENIDO A SU SESIÓN DE CPF";
 
             return View();
         }
