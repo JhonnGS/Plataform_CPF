@@ -1,31 +1,149 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+<section>
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="~/Content/form.css">
+</section>
+<!-- Header -->
+<header class="align-center">
+    <span><img width="200" height="200" src="~/Content/Pal/images/logocpf.svg" alt="" /></span>
+    <h1 class="card-title align-content-center title-form" style="color:#fffffF">HOLA BIENVENIDOS!</h1>
+    <p class="card-text align-content-center" style="color:#ffffff">
+        ¡CPF Por una educación digital!<br />
+        @*Twitter <a href="https://twitter.com/COLEGIOPAULO" target="_blank">COLEGIOPAULO</a> Facebook <a href="https://www.facebook.com/paulo.freire.140" target="_blank">Paulo Freire</a>.*@
+    </p>
+</header>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- Main -->
+<div id="main">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#intro" class="active">Nuevo</a></li>
+            <li><a href="#first">Aprender en casa</a></li>
+            <li><a href="#second">Plataforma</a></li>
+            <li><a href="#cta">Medidas COVID-19</a></li>
+        </ul>
+    </nav>
+
+    <!-- Introduction -->
+    <section id="intro" class="main">
+        <div class="spotlight">
+            <div class="content">
+                <header class="major">
+                    <h2>Inscripciones seguras</h2>
+                </header>
+                <p>
+                    Las inscripciones se realizan a través de esta plataforma
+                    para evitar el contagio y mantener las normas de sanidad, así como facilitar
+                    y agilizar el proceso.
+                </p>
+                <ul class="actions">
+                    <li><a href="~/Inscripciones/CargaImagen" class="button primary">Inscribete aquí &raquo;</a></li>
+                </ul>
+            </div>
+            <span class="image"><img src="~/Content/Pal/images/pic01.jpg" alt="" /></span>
+        </div>
+    </section>
+
+    <!-- First Section -->
+    <section id="first" class="main special">
+        <header class="major">
+            <h2>Aprende en casa</h2>
+        </header>
+        <ul class="features">
+            <li>
+                <span class="icon solid major style1 fa-code"></span>
+                <h3>Plataforma NIG-lms</h3>
+                <p>Hemos desarrollado nuestro propio Software educativo, usando las mejores tecnologías de AppWeb, a través de Microsoft Azure, para que tengas acceso rápido y seguro.</p>
+            </li>
+            <li>
+                <span class="icon major style3 fa-copy"></span>
+                <h3>No copiar y pegar</h3>
+                <p>Educación real, no sólo un blog o una sesión de Google classroom. Educación trascendente para un mundo nuevo y cambiante.</p>
+            </li>
+            <li>
+                <span class="icon major style5 fa-gem"></span>
+                <h3>Preparados</h3>
+                <p>Docentes comprometidos y capacitados, a través del programa de capacitación Iterativa Paulo Freire (IPF).</p>
+            </li>
+        </ul>
+        <footer class="major">
+            <ul class="actions special">
+                <li><a href="generic.html" class="button">Learn More &raquo;</a></li>
+            </ul>
+        </footer>
+    </section>
+
+    <!-- Second Section -->
+    <section id="second" class="main special">
+        <header class="major">
+            <h2>Plataforma NIG-lms</h2>
+            <p>
+                Diseñada para brindar asistencia educativa a los alumnos, padres de familia y docentes.<br />
+                a través de la Nube
+            </p>
+            <span class="logo"><img src="~/Content/Pal/images/logo-mascota.svg" alt="" /></span>
+        </header>
+        <ul class="statistics">
+            <li class="style1">
+                <span class="icon solid fa-code-branch"></span>
+                <strong>Comparte</strong> Tu trabajo
+            </li>
+            <li class="style2">
+                <span class="icon fa-folder-open"></span>
+                <strong>Guardado</strong> En la Nube
+            </li>
+            <li class="style3">
+                <span class="icon solid fa-signal"></span>
+                <strong>15 Gb/s</strong> Banda ancha
+            </li>
+            <li class="style4">
+                <span class="icon solid fa-laptop"></span>
+                <strong>E-learning</strong> Trabaja desde casa
+            </li>
+            <li class="style5">
+                <span class="icon fa-gem"></span>
+                <strong>Docentes</strong>capacitados
+            </li>
+        </ul>
+        <p class="content">
+            NIG-lms es una plataforma desarrollada teniendo como prioridad brindar una experiencia de aprendizaje  única, a través de una AppWeb que funciona mediante cualquier navegador moderno.
+            Nig-lms es un software de gestión del aprendizaje (LMS). A través de servicios web se ha desarrollado para que los docentes puedan administrar documentación y dar seguimiento a los procesos de aprendizaje de los alumnos
+            mediante múltiples herramientas diseñadas para facilitar el trabajo educativo, así como mantener a los padres de familia informados en tiempo real. .
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+        <footer class="major">
+            <ul class="actions special">
+                <li><a href="generic.html" class="button">Learn More &raquo;</a></li>
+            </ul>
+        </footer>
+    </section>
+
+    <!-- Get Started -->
+    <section id="cta" class="main special">
+        <header class="major">
+            <h2>Medidas contra el COVID-19</h2>
+            <p>Este regreso a clases volvemos con las nuevas normas de salubridad.</p>
+        </header>
+        <footer class="major">
+            <ul class="actions special">
+                <li><a href="http://sep.puebla.gob.mx/index.php/comunicados/inicia-este-lunes-20-de-julio-el-ciclo-escolar-2020-2021-en-puebla" class="button primary" target="_blank">Normativa SEP &raquo;</a></li>
+                <li><a href="generic.html" class="button">Guía Regreso seguro &raquo;</a></li>
+            </ul>
+        </footer>
+    </section>
+
 </div>
+
+<seccion>
+    <!-- Scripts -->
+    <script src="~/Content/Pal/assets/js/jquery.min.js"></script>
+    <script src="~/Content/Pal/assets/js/jquery.scrollex.min.js"></script>
+    <script src="~/Content/Pal/assets/js/jquery.scrolly.min.js"></script>
+    <script src="~/Content/Pal/assets/js/browser.min.js"></script>
+    <script src="~/Content/Pal/assets/js/breakpoints.min.js"></script>
+    <script src="~/Content/Pal/assets/js/util.js"></script>
+    <script src="~/Content/Pal/assets/js/main.js"></script>
+
+</seccion>
