@@ -1,0 +1,1267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDCPFORIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tema" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha_inicio" Type="datetime" Nullable="false" />
+          <Property Name="fecha_entrega" Type="datetime" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="tiempo" Type="time" Precision="7" Nullable="false" />
+          <Property Name="valor_asignado" Type="int" Nullable="false" />
+          <Property Name="valor_Obtenido" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idAlumno" Type="int" Nullable="false" />
+          <Property Name="idMateria" Type="int" Nullable="false" />
+          <Property Name="idMaestro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="idAdmin" />
+          </Key>
+          <Property Name="idAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="app" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apm" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="claveAdmin" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="app" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apm" Type="nvarchar(max)" />
+          <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" />
+          <Property Name="seccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="grado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="grupo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Directores">
+          <Key>
+            <PropertyRef Name="idDirector" />
+          </Key>
+          <Property Name="idDirector" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="app" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apm" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="seccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntregasTareas">
+          <Key>
+            <PropertyRef Name="idEntregasTarea" />
+          </Key>
+          <Property Name="idEntregasTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTarea" Type="int" Nullable="false" />
+          <Property Name="fecha_E" Type="datetime" Nullable="false" />
+          <Property Name="tarea" Type="varbinary" MaxLength="1" Nullable="false" />
+          <Property Name="puntos" Type="int" Nullable="false" />
+          <Property Name="idAlumno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMateria" Type="int" Nullable="false" />
+          <Property Name="nombreExamen" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fechaI" Type="datetime" Nullable="false" />
+          <Property Name="fechaC" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maestros">
+          <Key>
+            <PropertyRef Name="idMaestro" />
+          </Key>
+          <Property Name="idMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="app" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apm" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="seccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materias">
+          <Key>
+            <PropertyRef Name="idMateria" />
+          </Key>
+          <Property Name="idMateria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="codigo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha_i" Type="datetime" Nullable="false" />
+          <Property Name="fecha_f" Type="datetime" Nullable="false" />
+          <Property Name="horasxs" Type="time" Precision="7" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="grado" Type="int" Nullable="false" />
+          <Property Name="grupo" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="seccion" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="idMaestro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mochila">
+          <Key>
+            <PropertyRef Name="idMochila" />
+          </Key>
+          <Property Name="idMochila" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="elemento" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="fecha_subido" Type="datetime" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreguntasExamen">
+          <Key>
+            <PropertyRef Name="idPregunta" />
+          </Key>
+          <Property Name="idPregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idExamen" Type="int" Nullable="false" />
+          <Property Name="enunciadoPregunta" Type="nvarchar(max)" />
+          <Property Name="tipoPregunta" Type="nvarchar(max)" />
+          <Property Name="resp1" Type="nvarchar(max)" />
+          <Property Name="resp2" Type="nvarchar(max)" />
+          <Property Name="resp3" Type="nvarchar(max)" />
+          <Property Name="resp4" Type="nvarchar(max)" />
+          <Property Name="solucion" Type="nvarchar(max)" />
+          <Property Name="valorpuntos" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RespuestasAlumno">
+          <Key>
+            <PropertyRef Name="idRespuestaAlumno" />
+          </Key>
+          <Property Name="idRespuestaAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPregunta" Type="int" Nullable="false" />
+          <Property Name="idExamen" Type="int" Nullable="false" />
+          <Property Name="idAlumno" Type="int" Nullable="false" />
+          <Property Name="respuesta" Type="nvarchar(max)" />
+          <Property Name="puntosRespuesta" Type="int" />
+        </EntityType>
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="idTarea" />
+          </Key>
+          <Property Name="idTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha_I" Type="datetime" Nullable="false" />
+          <Property Name="fecha_E" Type="datetime" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="tipoTarea" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idMateria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tutores">
+          <Key>
+            <PropertyRef Name="idTutor" />
+          </Key>
+          <Property Name="idTutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="app" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apm" Type="nvarchar(max)" />
+          <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="correo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="contraseña" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="perfil" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TokenRecovery" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_ActividadesAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesMaestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="idMaestro" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministradorUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AlumnosUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirectoresUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Directores" Type="Self.Directores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Directores">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregasTareasAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="EntregasTareas" Type="Self.EntregasTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="EntregasTareas">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregasTareasTarea">
+          <End Role="Tareas" Type="Self.Tareas" Multiplicity="1" />
+          <End Role="EntregasTareas" Type="Self.EntregasTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tareas">
+              <PropertyRef Name="idTarea" />
+            </Principal>
+            <Dependent Role="EntregasTareas">
+              <PropertyRef Name="idTarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Examenes">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestrosUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MateriasMaestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="1" />
+          <End Role="Materias" Type="Self.Materias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="idMaestro" />
+            </Principal>
+            <Dependent Role="Materias">
+              <PropertyRef Name="idMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MochilaUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Mochila" Type="Self.Mochila" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Mochila">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasExamenExamenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="1" />
+          <End Role="PreguntasExamen" Type="Self.PreguntasExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="PreguntasExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoExamenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoPreguntasExamen">
+          <End Role="PreguntasExamen" Type="Self.PreguntasExamen" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreguntasExamen">
+              <PropertyRef Name="idPregunta" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TareasMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Tareas" Type="Self.Tareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Tareas">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutoresUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Tutores" Type="Self.Tutores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Tutores">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDCPFORIModelStoreContainer">
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Directores" EntityType="Self.Directores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntregasTareas" EntityType="Self.EntregasTareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maestros" EntityType="Self.Maestros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materias" EntityType="Self.Materias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mochila" EntityType="Self.Mochila" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreguntasExamen" EntityType="Self.PreguntasExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RespuestasAlumno" EntityType="Self.RespuestasAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tutores" EntityType="Self.Tutores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActividadesAlumnos" Association="Self.FK_ActividadesAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesMaestros" Association="Self.FK_ActividadesMaestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesMaterias" Association="Self.FK_ActividadesMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministradorUsuarios" Association="Self.FK_AdministradorUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlumnosUsuarios" Association="Self.FK_AlumnosUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirectoresUsuarios" Association="Self.FK_DirectoresUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Directores" EntitySet="Directores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregasTareasAlumnos" Association="Self.FK_EntregasTareasAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="EntregasTareas" EntitySet="EntregasTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregasTareasTarea" Association="Self.FK_EntregasTareasTarea">
+            <End Role="Tareas" EntitySet="Tareas" />
+            <End Role="EntregasTareas" EntitySet="EntregasTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesMaterias" Association="Self.FK_ExamenesMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Examenes" EntitySet="Examenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestrosUsuarios" Association="Self.FK_MaestrosUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MateriasMaestros" Association="Self.FK_MateriasMaestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Materias" EntitySet="Materias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MochilaUsuarios" Association="Self.FK_MochilaUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Mochila" EntitySet="Mochila" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasExamenExamenes" Association="Self.FK_PreguntasExamenExamenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="PreguntasExamen" EntitySet="PreguntasExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoAlumnos" Association="Self.FK_RespuestasAlumnoAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoExamenes" Association="Self.FK_RespuestasAlumnoExamenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoPreguntasExamen" Association="Self.FK_RespuestasAlumnoPreguntasExamen">
+            <End Role="PreguntasExamen" EntitySet="PreguntasExamen" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TareasMaterias" Association="Self.FK_TareasMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Tareas" EntitySet="Tareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutoresUsuarios" Association="Self.FK_TutoresUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Tutores" EntitySet="Tutores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDCPFORIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_entrega" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tiempo" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="valor_asignado" Type="Int32" Nullable="false" />
+          <Property Name="valor_Obtenido" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idAlumno" Type="Int32" Nullable="false" />
+          <Property Name="idMateria" Type="Int32" Nullable="false" />
+          <Property Name="idMaestro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_ActividadesAlumnos" FromRole="Actividades" ToRole="Alumnos" />
+          <NavigationProperty Name="Maestros" Relationship="Self.FK_ActividadesMaestros" FromRole="Actividades" ToRole="Maestros" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK_ActividadesMaterias" FromRole="Actividades" ToRole="Materias" />
+        </EntityType>
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="idAdmin" />
+          </Key>
+          <Property Name="idAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="app" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="claveAdmin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_AdministradorUsuarios" FromRole="Administrador" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="app" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="grado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="grupo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividades" Relationship="Self.FK_ActividadesAlumnos" FromRole="Alumnos" ToRole="Actividades" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_AlumnosUsuarios" FromRole="Alumnos" ToRole="Usuarios" />
+          <NavigationProperty Name="EntregasTareas" Relationship="Self.FK_EntregasTareasAlumnos" FromRole="Alumnos" ToRole="EntregasTareas" />
+          <NavigationProperty Name="RespuestasAlumno" Relationship="Self.FK_RespuestasAlumnoAlumnos" FromRole="Alumnos" ToRole="RespuestasAlumno" />
+        </EntityType>
+        <EntityType Name="Directores">
+          <Key>
+            <PropertyRef Name="idDirector" />
+          </Key>
+          <Property Name="idDirector" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="app" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_DirectoresUsuarios" FromRole="Directores" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="EntregasTareas">
+          <Key>
+            <PropertyRef Name="idEntregasTarea" />
+          </Key>
+          <Property Name="idEntregasTarea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTarea" Type="Int32" Nullable="false" />
+          <Property Name="fecha_E" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tarea" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
+          <Property Name="puntos" Type="Int32" Nullable="false" />
+          <Property Name="idAlumno" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_EntregasTareasAlumnos" FromRole="EntregasTareas" ToRole="Alumnos" />
+          <NavigationProperty Name="Tareas" Relationship="Self.FK_EntregasTareasTarea" FromRole="EntregasTareas" ToRole="Tareas" />
+        </EntityType>
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMateria" Type="Int32" Nullable="false" />
+          <Property Name="nombreExamen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaC" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK_ExamenesMaterias" FromRole="Examenes" ToRole="Materias" />
+          <NavigationProperty Name="PreguntasExamen" Relationship="Self.FK_PreguntasExamenExamenes" FromRole="Examenes" ToRole="PreguntasExamen" />
+          <NavigationProperty Name="RespuestasAlumno" Relationship="Self.FK_RespuestasAlumnoExamenes" FromRole="Examenes" ToRole="RespuestasAlumno" />
+        </EntityType>
+        <EntityType Name="Maestros">
+          <Key>
+            <PropertyRef Name="idMaestro" />
+          </Key>
+          <Property Name="idMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="app" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividades" Relationship="Self.FK_ActividadesMaestros" FromRole="Maestros" ToRole="Actividades" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_MaestrosUsuarios" FromRole="Maestros" ToRole="Usuarios" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK_MateriasMaestros" FromRole="Maestros" ToRole="Materias" />
+        </EntityType>
+        <EntityType Name="Materias">
+          <Key>
+            <PropertyRef Name="idMateria" />
+          </Key>
+          <Property Name="idMateria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_i" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_f" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="horasxs" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="grado" Type="Int32" Nullable="false" />
+          <Property Name="grupo" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seccion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idMaestro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividades" Relationship="Self.FK_ActividadesMaterias" FromRole="Materias" ToRole="Actividades" />
+          <NavigationProperty Name="Examenes" Relationship="Self.FK_ExamenesMaterias" FromRole="Materias" ToRole="Examenes" />
+          <NavigationProperty Name="Maestros" Relationship="Self.FK_MateriasMaestros" FromRole="Materias" ToRole="Maestros" />
+          <NavigationProperty Name="Tareas" Relationship="Self.FK_TareasMaterias" FromRole="Materias" ToRole="Tareas" />
+        </EntityType>
+        <EntityType Name="Mochila">
+          <Key>
+            <PropertyRef Name="idMochila" />
+          </Key>
+          <Property Name="idMochila" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="elemento" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="fecha_subido" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_MochilaUsuarios" FromRole="Mochila" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="PreguntasExamen">
+          <Key>
+            <PropertyRef Name="idPregunta" />
+          </Key>
+          <Property Name="idPregunta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idExamen" Type="Int32" Nullable="false" />
+          <Property Name="enunciadoPregunta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tipoPregunta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="resp1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="resp2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="resp3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="resp4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="solucion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="valorpuntos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Examenes" Relationship="Self.FK_PreguntasExamenExamenes" FromRole="PreguntasExamen" ToRole="Examenes" />
+          <NavigationProperty Name="RespuestasAlumno" Relationship="Self.FK_RespuestasAlumnoPreguntasExamen" FromRole="PreguntasExamen" ToRole="RespuestasAlumno" />
+        </EntityType>
+        <EntityType Name="RespuestasAlumno">
+          <Key>
+            <PropertyRef Name="idRespuestaAlumno" />
+          </Key>
+          <Property Name="idRespuestaAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPregunta" Type="Int32" Nullable="false" />
+          <Property Name="idExamen" Type="Int32" Nullable="false" />
+          <Property Name="idAlumno" Type="Int32" Nullable="false" />
+          <Property Name="respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="puntosRespuesta" Type="Int32" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_RespuestasAlumnoAlumnos" FromRole="RespuestasAlumno" ToRole="Alumnos" />
+          <NavigationProperty Name="Examenes" Relationship="Self.FK_RespuestasAlumnoExamenes" FromRole="RespuestasAlumno" ToRole="Examenes" />
+          <NavigationProperty Name="PreguntasExamen" Relationship="Self.FK_RespuestasAlumnoPreguntasExamen" FromRole="RespuestasAlumno" ToRole="PreguntasExamen" />
+        </EntityType>
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="idTarea" />
+          </Key>
+          <Property Name="idTarea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_I" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_E" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tipoTarea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idMateria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EntregasTareas" Relationship="Self.FK_EntregasTareasTarea" FromRole="Tareas" ToRole="EntregasTareas" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK_TareasMaterias" FromRole="Tareas" ToRole="Materias" />
+        </EntityType>
+        <EntityType Name="Tutores">
+          <Key>
+            <PropertyRef Name="idTutor" />
+          </Key>
+          <Property Name="idTutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="app" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_TutoresUsuarios" FromRole="Tutores" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="perfil" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TokenRecovery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_AdministradorUsuarios" FromRole="Usuarios" ToRole="Administrador" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK_AlumnosUsuarios" FromRole="Usuarios" ToRole="Alumnos" />
+          <NavigationProperty Name="Directores" Relationship="Self.FK_DirectoresUsuarios" FromRole="Usuarios" ToRole="Directores" />
+          <NavigationProperty Name="Maestros" Relationship="Self.FK_MaestrosUsuarios" FromRole="Usuarios" ToRole="Maestros" />
+          <NavigationProperty Name="Mochila" Relationship="Self.FK_MochilaUsuarios" FromRole="Usuarios" ToRole="Mochila" />
+          <NavigationProperty Name="Tutores" Relationship="Self.FK_TutoresUsuarios" FromRole="Usuarios" ToRole="Tutores" />
+        </EntityType>
+        <Association Name="FK_ActividadesAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesMaestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="idMaestro" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministradorUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AlumnosUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Alumnos">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregasTareasAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="EntregasTareas" Type="Self.EntregasTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="EntregasTareas">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoAlumnos">
+          <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumnos">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirectoresUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Directores" Type="Self.Directores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Directores">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregasTareasTarea">
+          <End Role="Tareas" Type="Self.Tareas" Multiplicity="1" />
+          <End Role="EntregasTareas" Type="Self.EntregasTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tareas">
+              <PropertyRef Name="idTarea" />
+            </Principal>
+            <Dependent Role="EntregasTareas">
+              <PropertyRef Name="idTarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Examenes">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasExamenExamenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="1" />
+          <End Role="PreguntasExamen" Type="Self.PreguntasExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="PreguntasExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoExamenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestrosUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Maestros">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MateriasMaestros">
+          <End Role="Maestros" Type="Self.Maestros" Multiplicity="1" />
+          <End Role="Materias" Type="Self.Materias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maestros">
+              <PropertyRef Name="idMaestro" />
+            </Principal>
+            <Dependent Role="Materias">
+              <PropertyRef Name="idMaestro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TareasMaterias">
+          <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+          <End Role="Tareas" Type="Self.Tareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materias">
+              <PropertyRef Name="idMateria" />
+            </Principal>
+            <Dependent Role="Tareas">
+              <PropertyRef Name="idMateria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MochilaUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Mochila" Type="Self.Mochila" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Mochila">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasAlumnoPreguntasExamen">
+          <End Role="PreguntasExamen" Type="Self.PreguntasExamen" Multiplicity="1" />
+          <End Role="RespuestasAlumno" Type="Self.RespuestasAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreguntasExamen">
+              <PropertyRef Name="idPregunta" />
+            </Principal>
+            <Dependent Role="RespuestasAlumno">
+              <PropertyRef Name="idPregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutoresUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Tutores" Type="Self.Tutores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Tutores">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDCPFORIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" />
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" />
+          <EntitySet Name="Directores" EntityType="Self.Directores" />
+          <EntitySet Name="EntregasTareas" EntityType="Self.EntregasTareas" />
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" />
+          <EntitySet Name="Maestros" EntityType="Self.Maestros" />
+          <EntitySet Name="Materias" EntityType="Self.Materias" />
+          <EntitySet Name="Mochila" EntityType="Self.Mochila" />
+          <EntitySet Name="PreguntasExamen" EntityType="Self.PreguntasExamen" />
+          <EntitySet Name="RespuestasAlumno" EntityType="Self.RespuestasAlumno" />
+          <EntitySet Name="Tareas" EntityType="Self.Tareas" />
+          <EntitySet Name="Tutores" EntityType="Self.Tutores" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_ActividadesAlumnos" Association="Self.FK_ActividadesAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesMaestros" Association="Self.FK_ActividadesMaestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesMaterias" Association="Self.FK_ActividadesMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministradorUsuarios" Association="Self.FK_AdministradorUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlumnosUsuarios" Association="Self.FK_AlumnosUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Alumnos" EntitySet="Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregasTareasAlumnos" Association="Self.FK_EntregasTareasAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="EntregasTareas" EntitySet="EntregasTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoAlumnos" Association="Self.FK_RespuestasAlumnoAlumnos">
+            <End Role="Alumnos" EntitySet="Alumnos" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirectoresUsuarios" Association="Self.FK_DirectoresUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Directores" EntitySet="Directores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregasTareasTarea" Association="Self.FK_EntregasTareasTarea">
+            <End Role="Tareas" EntitySet="Tareas" />
+            <End Role="EntregasTareas" EntitySet="EntregasTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesMaterias" Association="Self.FK_ExamenesMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Examenes" EntitySet="Examenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasExamenExamenes" Association="Self.FK_PreguntasExamenExamenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="PreguntasExamen" EntitySet="PreguntasExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoExamenes" Association="Self.FK_RespuestasAlumnoExamenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestrosUsuarios" Association="Self.FK_MaestrosUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Maestros" EntitySet="Maestros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MateriasMaestros" Association="Self.FK_MateriasMaestros">
+            <End Role="Maestros" EntitySet="Maestros" />
+            <End Role="Materias" EntitySet="Materias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TareasMaterias" Association="Self.FK_TareasMaterias">
+            <End Role="Materias" EntitySet="Materias" />
+            <End Role="Tareas" EntitySet="Tareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MochilaUsuarios" Association="Self.FK_MochilaUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Mochila" EntitySet="Mochila" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasAlumnoPreguntasExamen" Association="Self.FK_RespuestasAlumnoPreguntasExamen">
+            <End Role="PreguntasExamen" EntitySet="PreguntasExamen" />
+            <End Role="RespuestasAlumno" EntitySet="RespuestasAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutoresUsuarios" Association="Self.FK_TutoresUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Tutores" EntitySet="Tutores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDCPFORIModelStoreContainer" CdmEntityContainer="BDCPFORIEntities">
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Actividades">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+                <ScalarProperty Name="valor_asignado" ColumnName="valor_asignado" />
+                <ScalarProperty Name="valor_Obtenido" ColumnName="valor_Obtenido" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="idAdmin" ColumnName="idAdmin" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="apm" ColumnName="apm" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="claveAdmin" ColumnName="claveAdmin" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alumnos">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Alumnos">
+              <MappingFragment StoreEntitySet="Alumnos">
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="apm" ColumnName="apm" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="grado" ColumnName="grado" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Directores">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Directores">
+              <MappingFragment StoreEntitySet="Directores">
+                <ScalarProperty Name="idDirector" ColumnName="idDirector" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="apm" ColumnName="apm" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntregasTareas">
+            <EntityTypeMapping TypeName="BDCPFORIModel.EntregasTareas">
+              <MappingFragment StoreEntitySet="EntregasTareas">
+                <ScalarProperty Name="idEntregasTarea" ColumnName="idEntregasTarea" />
+                <ScalarProperty Name="idTarea" ColumnName="idTarea" />
+                <ScalarProperty Name="fecha_E" ColumnName="fecha_E" />
+                <ScalarProperty Name="tarea" ColumnName="tarea" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examenes">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Examenes">
+              <MappingFragment StoreEntitySet="Examenes">
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+                <ScalarProperty Name="nombreExamen" ColumnName="nombreExamen" />
+                <ScalarProperty Name="fechaI" ColumnName="fechaI" />
+                <ScalarProperty Name="fechaC" ColumnName="fechaC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maestros">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Maestros">
+              <MappingFragment StoreEntitySet="Maestros">
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="apm" ColumnName="apm" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materias">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Materias">
+              <MappingFragment StoreEntitySet="Materias">
+                <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="fecha_i" ColumnName="fecha_i" />
+                <ScalarProperty Name="fecha_f" ColumnName="fecha_f" />
+                <ScalarProperty Name="horasxs" ColumnName="horasxs" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="grado" ColumnName="grado" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mochila">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Mochila">
+              <MappingFragment StoreEntitySet="Mochila">
+                <ScalarProperty Name="idMochila" ColumnName="idMochila" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="elemento" ColumnName="elemento" />
+                <ScalarProperty Name="fecha_subido" ColumnName="fecha_subido" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreguntasExamen">
+            <EntityTypeMapping TypeName="BDCPFORIModel.PreguntasExamen">
+              <MappingFragment StoreEntitySet="PreguntasExamen">
+                <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="enunciadoPregunta" ColumnName="enunciadoPregunta" />
+                <ScalarProperty Name="tipoPregunta" ColumnName="tipoPregunta" />
+                <ScalarProperty Name="resp1" ColumnName="resp1" />
+                <ScalarProperty Name="resp2" ColumnName="resp2" />
+                <ScalarProperty Name="resp3" ColumnName="resp3" />
+                <ScalarProperty Name="resp4" ColumnName="resp4" />
+                <ScalarProperty Name="solucion" ColumnName="solucion" />
+                <ScalarProperty Name="valorpuntos" ColumnName="valorpuntos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespuestasAlumno">
+            <EntityTypeMapping TypeName="BDCPFORIModel.RespuestasAlumno">
+              <MappingFragment StoreEntitySet="RespuestasAlumno">
+                <ScalarProperty Name="idRespuestaAlumno" ColumnName="idRespuestaAlumno" />
+                <ScalarProperty Name="idPregunta" ColumnName="idPregunta" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+                <ScalarProperty Name="puntosRespuesta" ColumnName="puntosRespuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tareas">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Tareas">
+              <MappingFragment StoreEntitySet="Tareas">
+                <ScalarProperty Name="idTarea" ColumnName="idTarea" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fecha_I" ColumnName="fecha_I" />
+                <ScalarProperty Name="fecha_E" ColumnName="fecha_E" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipoTarea" ColumnName="tipoTarea" />
+                <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutores">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Tutores">
+              <MappingFragment StoreEntitySet="Tutores">
+                <ScalarProperty Name="idTutor" ColumnName="idTutor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="apm" ColumnName="apm" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BDCPFORIModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="perfil" ColumnName="perfil" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="TokenRecovery" ColumnName="TokenRecovery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

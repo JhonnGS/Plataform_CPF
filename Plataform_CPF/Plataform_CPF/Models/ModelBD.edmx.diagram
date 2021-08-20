@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e54a93b83b7f4d0d82174676851b9da2" Name="Diagram1">
+        <EntityTypeShape EntityType="BDCPFORIModel.Actividades" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Administrador" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Alumnos" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Directores" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.EntregasTareas" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Examenes" Width="1.5" PointX="7.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Maestros" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Materias" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Mochila" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.PreguntasExamen" Width="1.5" PointX="9.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.RespuestasAlumno" Width="1.5" PointX="12" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Tareas" Width="1.5" PointX="7.5" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Tutores" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDCPFORIModel.Usuarios" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="BDCPFORIModel.FK_ActividadesAlumnos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_ActividadesMaestros" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_ActividadesMaterias" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_AdministradorUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_AlumnosUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_EntregasTareasAlumnos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_RespuestasAlumnoAlumnos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_DirectoresUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_EntregasTareasTarea" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_ExamenesMaterias" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_PreguntasExamenExamenes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_RespuestasAlumnoExamenes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_MaestrosUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_MateriasMaestros" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_TareasMaterias" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_MochilaUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_RespuestasAlumnoPreguntasExamen" ManuallyRouted="false" />
+        <AssociationConnector Association="BDCPFORIModel.FK_TutoresUsuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
