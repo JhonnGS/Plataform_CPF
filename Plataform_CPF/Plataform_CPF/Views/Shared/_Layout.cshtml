@@ -1,43 +1,149 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title> Plataforma | CPF </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <!-- favicon============================================ -->
+    <link rel="shortcut icon" type="/image/x-icon" href="~/Content/Pal/images/logocpf.svg" alt="" />
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbar-static/">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/form.css" />
+
+    <link rel="stylesheet" href="~/Content/forInterfaz.css" />
+
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/navbar-static/">
+
+    <meta name="theme-color" content="#563d7c">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @@media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.6/examples/navbar-static/navbar-top.css" rel="stylesheet">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        @if (Request.IsAuthenticated)
+        {
+            <a href="~/Home/Index"><img width="45" height="45" src="~/Content/Pal/images/logocpf.svg" alt="" title="Pagina de Inicio" /></a>
+            <ul class="nav navbar-nav navbar-left navbar-top-links">
+                <li><a href="~/Alumnos/HomeA"><i class="fa fa-home fa-fw"></i> MY HOME <img width="25" height="25" src="~/Content/Pal/images/logocpf.svg" alt="" title="MI SESION" /></a></li>
+            </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto"></ul>
+
+                <a class="btn btn-outline-success my-2 my-sm-0" href="~/Account/Login">
+                    ENTRAR A APRENDER
+                </a>
+                <a class="btn btn-outline-success " href="~/Home/Contact">MASTERCONTACTO</a>
+                <a class="btn btn-outline-success " href="~/Home/About">ACERCA DE..</a>
+                <a class="btn btn-outline-success " href="~/Home/Bienvenido">BIENVENIDO</a>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+        }
+        else
+        {
+            <a href="~/Home/Index"><img width="45" height="45" src="~/Content/Pal/images/logocpf.svg" alt="" title="Pagina de Inicio" /></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
                 </ul>
+
+                <a class="btn btn-outline-success my-2 my-sm-0" href="~/Account/Login">
+                    ENTRAR A APRENDER
+                </a>
+                <a class="btn btn-outline-success " href="~/Home/Contact">MASTERCONTACTO</a>
+                <a class="btn btn-outline-success " href="~/Home/About">ACERCA DE..</a>
+                <a class="btn btn-outline-success " href="~/Home/Bienvenido">BIENVENIDO</a>
+
             </div>
-        </div>
-    </div>
+        }
+    </nav>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>Colegio Paulo Freire</h2>
+                <p>Servicios de Calidad Educativa A.C. se preocupa por la seguridad de tus datos, puedes leer el Aviso de Privacidad si tienes alguna duda sobre el uso de tu infomación.</p>
+                <ul class="actions">
+                    <li>@*<button class="button" style="width:200px; height:60px" onclick="location.href='@Url.Action("Aviso", "Home")';return false;">Aviso de privacidad &raquo;</button>*@</li>
+                    <li><a href="~/Home/Aviso" style="width:240px; height:60px" class="button btn-outline-primary bt">Aviso de privacidad &raquo;</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Contacto</h2>
+                <dl class="alt">
+                    <dt>Dirección</dt>
+                    <dd> <a href="https://goo.gl/maps/8JzFyUG3bn5pcGj1A" target="_blank"> Rafael Ávila Camacho no. 576 B </a> &bull; Ajalpan, CP 75910 &bull; México</dd>
+                    <dt>Teléfono</dt>
+                    <dd>(236) 381-1567</dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="https://twitter.com/COLEGIOPAULO" class="icon brands fa-twitter alt"><span class="label" style="color:aqua">Twitter</span></a></li>
+                    <li><a href="https://www.facebook.com/paulo.freire.140" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                </ul>
+            </section>
+            <p class="copyright">&copy; CPF. Diseño css3: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
         </footer>
     </div>
-
+    <!-- Scripts -->
+    <script src="~/Content/Pal/assets/js/jquery.min.js"></script>
+    <script src="~/Content/Pal/assets/js/jquery.scrollex.min.js"></script>
+    <script src="~/Content/Pal/assets/js/jquery.scrolly.min.js"></script>
+    <script src="~/Content/Pal/assets/js/browser.min.js"></script>
+    <script src="~/Content/Pal/assets/js/breakpoints.min.js"></script>
+    <script src="~/Content/Pal/assets/js/util.js"></script>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
