@@ -328,6 +328,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\StartRecovery.cshtml" />
     <Content Include="Views\Account\Recovery.cshtml" />
+    <Content Include="Views\Home\Aviso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
