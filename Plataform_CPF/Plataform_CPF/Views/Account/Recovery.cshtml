@@ -1,0 +1,36 @@
+﻿@model Plataform_CPF.Models.ViewModels.RecoveryPasswordViewModel
+
+@{
+    ViewBag.Title = "Recovery";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="~/Content/form.css">
+</section>
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="form-style">
+            <p>LOS CAMPOS MARCADOS CON * SON OBLIGATORIOS</p>
+            <form action="@Url.Content("~/Account/Recovery")" method="post">
+                @Html.HiddenFor(d => d.token)
+
+                <label>NUEVA CONTRASEÑA</label>
+                @Html.PasswordFor(d => d.Password, new { @class = "input1", @placeholder = "* ESCRIBA LA NUEVA CONTRASEÑA QUE DESEE AQUÍ" })
+                @Html.ValidationMessageFor(d => d.Password, null, new { style = "color:red;" })
+
+                <label>CONFIRMAR CONTRASEÑA</label>
+                @Html.PasswordFor(d => d.Password2, new { @class = "input1", @placeholder = "* REPITA SU NUEVA CONTRASEÑA" })
+                @Html.ValidationMessageFor(d => d.Password2, null, new { style = "color:red;" })
+                <br />
+                <div class="text-right">
+                    <button class="btn3 btn-primary">RECUPERAR</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

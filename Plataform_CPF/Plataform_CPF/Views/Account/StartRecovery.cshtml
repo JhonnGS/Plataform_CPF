@@ -1,0 +1,55 @@
+﻿@model Plataform_CPF.Models.ViewModels.RecoveryViewModel
+
+@{
+    ViewBag.Title = "StartRecovery";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+</head>
+<section>
+    <script src="@Url.Content("~/Scripts/Val.js")"></script>
+    <link rel="stylesheet" href="~/Content/form.css">
+</section>
+
+<div class="row">
+
+    @using (Html.BeginForm("StartRecovery", "Account", FormMethod.Post, new { @id = "form", @class = "father-form align-center" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="pt-10 pb-16" id="form">
+            <h1 class="title-form ">¿OLVIDASTES TU CONTRASEÑA? </h1>
+            <h3>INGRESA TU CORREO PARA RECUPERAR</h3>
+            <h3 class="tiT" style="color:red"> @ViewBag.Error </h3>
+            <div class="container">
+                <div class="father align-center">
+                    <div class="bg-success shadow-sm rounded p-4 align-content-center">
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+                                <div class="card-title px-lg-4 px-1 pb-3">
+
+                                    <P class="otra-opcion">HOLA BIENVENIDO ACONTINUACIÓN PROCEDEREMOS CON EL CAMBIO DE CONTRASEÑA</P>
+                                    @Html.TextBoxFor(d => d.Email, null, new { @class = "input1", @placeholder = "* ESCRIBA SU CORREO ELECTRÓNICO", @required = "true", @onchange = "ValidaCorreo(this.value, this.id)", @onkeypress = "return calle(event)" })
+                                    @Html.ValidationMessageFor(d => d.Email, null, new { style = "color:red;" })
+
+                                    <div class="fath align-center">
+                                        <div class="col-xs-6 col-sm-offset-3 align-center">
+                                            <button class="btn3" type="submit" value="Continuar" style="width:120px; height:60px">CONTINUAR</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

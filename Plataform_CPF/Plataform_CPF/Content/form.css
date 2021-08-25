@@ -1,0 +1,173 @@
+﻿/*--CONFIGURANDO-MARGENES--------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'open sans', 'calibri', 'arial';
+}
+
+/*--FONDO-DE-PAGINA--------------*/
+body {
+    background: linear-gradient(45deg, #33c96c, #139D8D );
+}
+
+linar-centro {
+    align-content: center;
+}
+
+
+/*--FORMULARIO-------------------*/
+.father-form {
+    align-content: center;
+    width: 800px;
+    margin: auto;
+    border-left: 12px solid #ffd800;
+    border-right: 2px solid blue;
+}
+
+.fath {
+    align-content: center;
+}
+
+/*--TITULO-DEL-FORMULARIO--------*/
+.title-form {
+    text-align: center;
+    align-content: center;
+    margin-bottom: 20px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.tiT {
+    align-content: center;
+    margin-bottom: 15px;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration-color: red;
+}
+
+.strong, b {
+    font-weight: bold;
+}
+/*--INPUT------------------------*/
+.input {
+    align-content: center;
+    font-weight: bold;
+    color: blue;
+    width: 120%;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+
+    .input:hover, .input:focus {
+        border-left: 10px solid #ffd800;
+    }
+
+/*--INPUT-NOMBRE-----------------*/
+.input1 {
+    text-align: center;
+    align-content: center;
+    color: blue;
+    border-radius: 2px;
+    border: none;
+    margin-bottom: 20px;
+    margin-right: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+    .input1:hover, .input1:focus {
+        border-left: 10px solid #ffd800;
+    }
+
+.input2 {
+    font-weight: bold;
+    color: blue;
+    padding: 10px;
+    font-size: 15px;
+}
+
+/*--BOTON-DE-REGISTRAR-----------*/
+.btn {
+    align-content: center;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+    .btn:hover {
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+    }
+
+.btn1 {
+    align-content: center;
+    background: blue;
+    top: 1px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .btn1:hover {
+        background: #ffd800;
+    }
+
+.btn2 {
+    background: gold;
+    top: 1px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .btn2:hover {
+        background: blue;
+    }
+
+.btn3 {
+    background: #ffd800;
+    align-content: center;
+    text-align: center;
+    top: 1px;
+    padding: 4px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .btn3:hover {
+        background: blue;
+    }
+
+/*--OTRA-OPCION------ya tengo cuenta------------*/
+.otra-opcion {
+    align-content: center;
+    text-align: center;
+    color: #0026ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .otra-opcion:hover {
+        color: gold;
+    }

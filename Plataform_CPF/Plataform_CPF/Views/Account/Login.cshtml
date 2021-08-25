@@ -1,0 +1,135 @@
+﻿@using Plataform_CPF.Models
+@model Plataform_CPF.Models.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "REGISTRATE E INICIE SESIÓN";
+    //Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/Content/form.css">
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+</head>
+<script src="@Url.Content("~/Scripts/Val.js")"></script>
+<div class="row">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "father-form", role = "form" }))
+    {
+        <h1 class="title-form align-text-bottom">BIENVENIDO! </h1>
+        <h3 class="otra-opcion">INICIA SESIÓN PARA IR A HOME CPF "O" REGISTRATE PARA EMPEZAR</h3>
+        <h2 class="tiT">@ViewBag.Error </h2>
+        <h2 class="tiT" style="color:darkblue">@ViewBag.Message </h2>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="bg-success shadow-sm rounded align-content-center">
+            <div class="card-header px-lg-3 px-2 pt-1 pb-0 border-0 bg-transparent">
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs text-center align-center" role="tablist">
+                                <a class="nav-item nav-link font-weight-bold px-5 active" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-selected="true"><h2 class="title-form">INICIAR SESIÓN</h2></a>
+                                <a class="nav-item nav-link font-weight-bold px-5 align-content-center" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-selected="true"><h2 class="title-form">REGISTRARSE</h2></a>
+                            </div>
+                        </nav>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+                    <div class="card-title px-lg-4 px-1 pb-3 align-content-center">
+                        <div class="form-group mb-2">
+                            <input class="input1" type="email" placeholder="CORREO ELECTRÓNICO" required name="Email" style="color:gold">
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <input class="input1" id="txtPass" type="password" placeholder="CONTRASEÑA" required name="password" style="color:gold">
+                            <div class="justify-content-around">
+                                <button type="button" id="btn-mostrar-pass" title="Mostar contraseña" style=" background-color: #808080;width:0px; height:0px; top: 0px; ">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                        <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+
+                                    </svg>
+                                </button>
+                                <p class="otra-opcion">
+                                    @Html.ActionLink("¿OLVIDO SU CONTRASEÑA", "StartRecovery")
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.57 6.033H5.25C5.22 4.147 6.68 3.5 8.006 3.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H7.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" />
+
+                                    </svg>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="fath align-center">
+                            <div class="col-xs-6 col-sm-offset-3 align-center">
+                                <button class="btn2" style="width:120px; height:60px" type="submit">INICIAR SESIÓN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade align-content" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                    <div class="card-title px-lg-7 px-4 pt-6 pb-5 align-content-lg-center">
+                        <div class="form-group align-center">
+                            <button class="btn1 btn-success" style="width:140px; height:50px" onclick="location.href='@Url.Action("RA", "Account")';return false;">ALUMNOS</button>
+                        </div>
+                        <div class="form-group align-center">
+                            <button class="btn1 btn-success" style="width:140px; height:50px" onclick="location.href='@Url.Action("RM", "Account")';return false;">MAESTROS</button>
+                        </div>
+                        <div class="form-group align-center">
+                            <button class="btn1 btn-success" style="width:140px; height:50px" onclick="location.href='@Url.Action("RT", "Account")';return false;">PADRE/TUTOR</button>
+                        </div>
+                        <div class="form-group align-center">
+                            <button class="btn1 btn-success " style="width:140px; height:50px" onclick="location.href='@Url.Action("RD", "Account")';return false;">DIRECTORES</button>
+                        </div>
+                        <div class="form-group align-center">
+                            <button class="btn1 btn-success " style="width:170px; height:50px" onclick="location.href='@Url.Action("IdentificarAdmin", "Account")';return false;">ADMNISTRADOR</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#frm").submit(function (e) {
+                e.preventDefault();
+
+                url = "@Url.Content("~/Account/Login")"
+                parametros = $(this).serialize();
+                $.post(url, parametros, function (data) {
+                    if (data == "1") {
+                        document.location.href = "@Url.Content("~/")"
+                    } else {
+                        alert(data)
+                    }
+                })
+            })
+        });
+
+    var activadoMostrar = false;
+        $('#btn-mostrar-pass').click(function () {
+            if (activadoMostrar) {
+                activadoMostrar = false;
+                $('#txtPass').removeAttr("type", "text");
+                $('#txtPass').prop("type", "password");
+            } else {
+                activadoMostrar = true;
+                $('#txtPass').removeAttr("type", "password");
+                $('#txtPass').prop("type", "text");
+            }
+        });
+    </script>
+
+}
