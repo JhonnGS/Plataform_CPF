@@ -635,7 +635,7 @@ namespace Plataform_CPF.Controllers
             }
             if (ViewBag.mensaje == 3)
             {
-                ViewBag.Error = "ERROR AL REGISTRAR LOS DATOS CONTACTE AL ADMINISTRADOR<<>>";
+                ViewBag.Error = "ERROR AL REGISTRAR LOS DATOS CONTACTE AL ADMINISTRADOR ACTIVO<<>>";
             }
             return View();
         }

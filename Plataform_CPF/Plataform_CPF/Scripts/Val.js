@@ -16,7 +16,7 @@ function comprueba_extension(archivo) {
     } else {
 
         extension = (file.substring(file.lastIndexOf("."))).toLowerCase();
-        permitida = false;
+        permitida = false;// de tipo booleano pero sei inicializa con faLSE
         for (var i = 0; i < extensiones_permitidas.length; i++) {
             if (extensiones_permitidas[i] == extension) {
                 permitida = true;
@@ -95,7 +95,6 @@ function Password(input, id) {
 
 function UsuarioSol() {
     var user = $("#idUsuario").val();
-    
     $.getJSON('/Alumnos/obtenerUser', { Usuarios: user }, function (data) {
         $.each(data, function () {
             console.log(data[0].usuario);
