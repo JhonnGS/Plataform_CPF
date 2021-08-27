@@ -307,9 +307,9 @@ namespace Plataform_CPF.Controllers
                         Usuarios oUser = new Usuarios();
                         oUser.correo = Correo;
                         oUser.contraseña = Contraseña;
-                        oUser.usuario = Nombre + " - " + App;
+                        oUser.usuario = Nombre + " - " + App + "-" + Apm;
                         oUser.perfil = "ALUMNO";
-                        oUser.status = "HABILITADO";
+                        oUser.status = "ACTIVO";
                         db.Usuarios.Add(oUser);
                         db.SaveChanges();
 
@@ -392,7 +392,7 @@ namespace Plataform_CPF.Controllers
                         oUser.contraseña = Contraseña;
                         oUser.usuario = Nombre + " - " + App;
                         oUser.perfil = "MAESTRO";
-                        oUser.status = "HABILITADO";
+                        oUser.status = "ACTIVO";
                         db.Usuarios.Add(oUser);
                         db.SaveChanges();
 
@@ -472,7 +472,7 @@ namespace Plataform_CPF.Controllers
                         oUser.contraseña = Contraseña;
                         oUser.usuario = Nombre + " - " + App;
                         oUser.perfil = "TUTOR";
-                        oUser.status = "HABILITADO";
+                        oUser.status = "ACTIVO";
                         db.Usuarios.Add(oUser);
                         db.SaveChanges();
 
@@ -553,7 +553,7 @@ namespace Plataform_CPF.Controllers
                         oUser.contraseña = Contraseña;
                         oUser.usuario = Nombre + " - " + App;
                         oUser.perfil = "DIRECTOR";
-                        oUser.status = "HABILITADO";
+                        oUser.status = "ACTIVO";
                         db.Usuarios.Add(oUser);
                         db.SaveChanges();
 
@@ -671,7 +671,7 @@ namespace Plataform_CPF.Controllers
                             oUser.contraseña = Contraseña;
                             oUser.usuario = Nombre + " - " + App;
                             oUser.perfil = "ADMINISTRADOR";
-                            oUser.status = "HABILITADO";
+                            oUser.status = "ACTIVO";
                             db.Usuarios.Add(oUser);
                             db.SaveChanges();
 

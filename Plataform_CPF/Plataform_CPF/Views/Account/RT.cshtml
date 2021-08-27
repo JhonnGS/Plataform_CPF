@@ -1,0 +1,157 @@
+﻿@model Plataform_CPF.Models.ViewModels.UserAT
+@{
+    ViewBag.Title = "REGISTRO NUEVO TUTOR";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" type="/image/x-icon" href="~/Content/Pal/images/logocpf.svg" alt="" />
+
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+</head>
+
+<section>
+    <script src="@Url.Content("~/Scripts/Val.js")"></script>
+    <link rel="stylesheet" href="~/Content/form.css">
+</section>
+
+<div class="row">
+    @using (Html.BeginForm("RT", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "form", @class = "father-form align-center" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h2 style="color:blue" class="tiT"> @ViewBag.Message </h2>
+        <h3 style="color:blue" class="tiT"> @ViewBag.M</h3>
+        <h3 class="tiT"> @ViewBag.Error</h3>
+
+        <h2 class="title-form">BIENVENIDO AL FORMULARIO DE REGISTRO DE PADRE Y/O TUTOR! </h2>
+
+        <h4> ATENCIÓN FAVOR DE LLENAR LOS CAMPOS MARCADOS CON *</h4>
+        <hr />
+
+        <div class="align-content-between">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*<div class="form-group">
+                @Html.Label("* Cargue foto de perfil", htmlAttributes: new { @class = "control-label col-md-10", @color = "yellow" })
+                <div class="col-md-8">*@
+            @*@Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control",@type="file", @onchange = "comprueba_extension('file')" } })*@
+            @*<input type="file"  name="file"  id="file" onchange="comprueba_extension('file')" required style = "color:gold" />
+                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.Label(" NOMBRE(S)", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU NOMBRE COMPLETO", @required = "true", @onchange = "ValidarND(this.value, this.id)", @onkeypress = "return cal(event)", @style = "color:gold", @onBlur = "this.value = this.value.toUpperCase()" } })
+                @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" APELLIDO PATERNO", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.App, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU APELLIDO PATERNO", @required = "true", @onchange = "ValidarND(this.value, this.id)", @onkeypress = "return cal(event)", @style = "color:gold", @onBlur = "this.value = this.value.toUpperCase()" } })
+                @Html.ValidationMessage("App", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" APELLIDO MATERNO", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.Apm, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU APELLIDO MATERNO", @required = "true", @onchange = "ValidarND(this.value, this.id)", @onkeypress = "return cal(event)", @style = "color:gold", @onBlur = "this.value = this.value.toUpperCase()" } })
+                @Html.ValidationMessage("Apm", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" DIRECCÍÓN", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU DIRECCIÓN", @required = "true", @style = "color:gold", @onBlur = "this.value = this.value.toUpperCase()" } })
+                @Html.ValidationMessage("Address", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" TELÉFONO", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU TELÉFONO", @required = "true", @onchange = "Tel(this.value, this.id)", @onkeypress = "return cal(event)", @style = "color:gold" } })
+                @Html.ValidationMessage("Telephone", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" CORREO ELECTRÓNICO", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input1", @type = "text", @placeholder = "* INGRESÉ SU CORREO ELECTRÓNICO", @required = "true", @style = "color:gold" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label(" CONTRASEÑA", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                <input class="input1" id="txtPass" type="password" placeholder="* INGRESÉ SU CONTRASEÑA" required name="PASSWORD" style="color:gold">
+                @Html.ValidationMessage("Campo requerido", new { @class = "text-danger" })
+                <div class="col-md-1" style="padding-right: 0px; padding-left: 0px;">
+                    <span class="input-group-btn">
+                        <button type="button" id="btn-mostrar-pass" title="Mostar contraseña" style=" background-color: #808080;width:0px; height:0px; top: 0px; ">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+
+                            </svg>
+                        </button>
+
+                    </span>
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.Label(" SEXÓ", htmlAttributes: new { @class = "tiT control-label col-md-12 ", @style = "color:darkblue" })
+                @Html.DropDownListFor(model => model.Sex, new SelectList(
+                 new List<Object>{
+                                                    new { value = "MASCULINO" , text = "MASCULINO" },
+                                                    new { value = "FEMENINO" , text = "FEMENINO" }
+                              }, "value", "text", 2), "* ELIJA SU SEXÓ", htmlAttributes: new { @class = "input", @style = "color:gold", @required = "true" })
+                @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+        <p class="otra-opcion"><button class="btn3" type="submit" value="REGISTRARSE" style="width:120px; height:60px">REGISTRARSE</button></p>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box-footer">
+                    <p class="otra-opcion"><a class="otra-opcion" title="REGRESAR AL LOGIN" href="~/Account/Login">YA TENGO CUENTA</a></p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(document).ready(function () {
+            $("#frm").submit(function (e) {
+                e.preventDefault();
+
+                url = "@Url.Content("~/Account/RT")"
+                parametros = $(this).serialize();
+                $.post(url, parametros, function (data) {
+                    if (data == "1") {
+                        document.location.href = "@Url.Content("~/")"
+                    } else {
+                        alert(data)
+                    }
+                })
+            })
+        });
+
+        var activadoMostrar = false;
+        $('#btn-mostrar-pass').click(function () {
+            if (activadoMostrar) {
+                activadoMostrar = false;
+                $('#txtPass').removeAttr("type", "text");
+                $('#txtPass').prop("type", "password");
+            } else {
+                activadoMostrar = true;
+                $('#txtPass').removeAttr("type", "password");
+                $('#txtPass').prop("type", "text");
+            }
+        });
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿<section>
+    <link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="~/Content/form.css">
+</section>
+
+@{
+    ViewBag.Title = "VERIFICANDO ADMINISTRADOR";
+}
+
+<div class="row">
+
+    @using (Html.BeginForm("IdentificarAdmin", "Account", FormMethod.Post, new { @id = "form", @class = "father-form align-center" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="pt-10 pb-16" id="form">
+            <h1 class="title-form ">BIENVENIDO! </h1>
+            <h3>ANTES DE CONTINUAR VERIFIQUEMOS QUE ES ADMINISTRADOR</h3>
+            <h3 class="tiT" style="color:red"> @ViewBag.Error </h3>
+            <div class="container">
+                <div class="father align-center">
+                    <div class="bg-success shadow-sm rounded p-4 align-content-center">
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+                                <div class="card-title px-lg-4 px-1 pb-3">
+
+                                    <div class="form-group mb-2">
+                                        <input class="input1" id="txtPass" type="password" placeholder="* INGRESE LA CLAVE PARA VERIFICAR" required name="clave">
+                                        <div class="justify-content-around">
+                                            <button type="button" id="btn-mostrar-pass" title="Mostrar Clave" style=" background-color: #808080;width:0px; height:0px; top: 0px; ">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                    <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="fath align-center">
+                                        <div class="col-xs-6 col-sm-offset-3 align-center">
+                                            <button class="btn3" type="submit" value="Continuar" style="width:120px; height:60px">CONTINUAR</button>
+                                            <p class="otra-opcion"><a class="otra-opcion" title="LOGIN&REGISTROS" href="~/Account/Login">REGRESAR</a></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var activadoMostrar = false;
+        $('#btn-mostrar-pass').click(function () {
+            if (activadoMostrar) {
+                activadoMostrar = false;
+                $('#txtPass').removeAttr("type", "text");
+                $('#txtPass').prop("type", "password");
+            } else {
+                activadoMostrar = true;
+                $('#txtPass').removeAttr("type", "password");
+                $('#txtPass').prop("type", "text");
+            }
+        });
+    </script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+}
