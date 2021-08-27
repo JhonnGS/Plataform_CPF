@@ -24,7 +24,7 @@ namespace Plataform_CPF.Controllers
     public class AccountController : Controller
     {
         //private BDCPFprEntities db = new BDCPFprEntities();       
-        string urlDomain = "http://localhost:50260/";
+        string urlDomain = "http://localhost:53557/";
 
         private IUsuarioRepository _repoUsuario;
 
