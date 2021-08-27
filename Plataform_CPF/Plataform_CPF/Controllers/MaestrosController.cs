@@ -21,17 +21,17 @@ using System.IO;
 
 namespace Plataform_CPF.Controllers
 {
-    public class TeacherController : Controller
+    public class MaestrosController : Controller
     {
         private BDCPFORIEntities db = new BDCPFORIEntities();
         private IUsuarioRepository _repoUsuario;
 
-        public TeacherController(IUsuarioRepository repository)
+        public MaestrosController(IUsuarioRepository repository)
         {
             _repoUsuario = repository;
         }
 
-        public TeacherController() : this(new UsuarioRepository())
+        public MaestrosController() : this(new UsuarioRepository())
         {
 
         }
