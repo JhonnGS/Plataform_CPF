@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title> CPF | MI SESIÒN </title>
+
+    <!-- favicon============================================ -->
+    <link rel="shortcut icon" type="/image/x-icon" href="~/Content/Pal/images/logocpf.svg" alt="" />
+
+    <link rel="stylesheet" href="~/Content/form.css" />
+    <link rel="stylesheet" href="~/Content/forInterfaz.css" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/startmin/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/startmincss/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/Content/startmin/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/startmin/css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/startmin/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/startmin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    @*<link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>*@
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand oopcion" href="~/Teacher/HomeT" title="My Home">PLATAFORMA | CPF</a>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul class="nav navbar-nav navbar-left navbar-top-links OP2">
+                <li><a href="~/Home/Index" class="btn" title="Pagina de Inicio"><i class="fa fa-home fa-fw"></i> Website <img width="25" height="25" src="~/Content/Pal/images/logocpf.svg" alt="" title="Pagina de Inicio" /></a></li>
+            </ul>
+
+            <ul class="nav navbar-right navbar-top-links OP2">
+
+                <li class="dropdown">
+                    <a class="btn dropdown-toggle oopcion" data-toggle="dropdown" href="#">
+
+                        @if (Session["UserM"] != null)
+                        {
+                            <text> <i class="fa  fa-hand-spock-o fa-fw"></i> HOLA <i class="fa fa-angellist fa-fw"></i><< @Session["UserM"].ToString() >></text>
+                        }
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="~/Teacher/TPerfil/1 "><i class="fa fa-user fa-fw"></i> PERFIL DE USUARIO</a>
+                        </li>
+                        <li>
+                            <a href="~/Teacher/MConfiguracion/1"><i class="fa fa-gear fa-fw"></i> CONFIGURACIÓN</a>
+                        </li>
+                        <li class="divider">
+
+                        </li>
+                        <li>
+                            <a href="~/Teacher/CerrarSesion"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <br />
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+
+                        </li>
+                        <li>
+                            <a href="" class="active OP3"><i class="OP2 fa fa-briefcase fa-fw"></i>MI MOCHILA</a>
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-calendar-plus-o fa-fw"></i>CALENDARIO | EVENTOS</a>
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-edit fa-fw"></i>AGENDA | CREAR EVENTO</a>
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-wrench fa-fw"></i>CREAR MATERIA</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-wrench fa-fw"></i>CREAR TAREA</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-wrench fa-fw"></i>CREAR EXAMEN</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-sitemap fa-fw"></i>LISTAR MATERIAS,TAREAS,EXAMEN</a>
+                        </li>
+                        <li>
+                            <a href="" class="OP3"><i class="OP2 fa fa-book fa-fw"></i>CALIFICACIONES</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <!-- Footer -->
+            <footer id="footer"></footer>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/startmin/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Content/startmin/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/startmin/js/raphael.min.js"></script>
+    <script src="~/Content/startmin/js/morris.min.js"></script>
+    <script src="~/Content/startmin/js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Content/startmin/js/startmin.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
