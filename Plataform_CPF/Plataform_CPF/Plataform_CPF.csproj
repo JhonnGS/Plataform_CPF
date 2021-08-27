@@ -422,16 +422,16 @@
     <Content Include="Views\Account\RD.cshtml" />
     <Content Include="Views\Account\IdentificarAdmin.cshtml" />
     <Content Include="Views\Account\RAD.cshtml" />
-    <Content Include="Views\Teacher\_LayoutMT.cshtml" />
-    <Content Include="Views\Teacher\HomeT.cshtml" />
-    <Content Include="Views\Teacher\TPerfil.cshtml" />
-    <Content Include="Views\Teacher\MConfiguracion.cshtml" />
+    <Content Include="Views\Maestros\_LayoutMT.cshtml" />
+    <Content Include="Views\Maestros\TPerfil.cshtml" />
+    <Content Include="Views\Maestros\MConfiguracion.cshtml" />
+    <Content Include="Views\Maestros\HomeM.cshtml" />
+    <Content Include="Views\Maestros\MPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\startmin\.git\objects\info\" />
     <Folder Include="Content\startmin\.git\refs\tags\" />
-    <Folder Include="Views\Maestros\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
