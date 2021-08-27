@@ -423,9 +423,10 @@
     <Content Include="Views\Account\IdentificarAdmin.cshtml" />
     <Content Include="Views\Account\RAD.cshtml" />
     <Content Include="Views\Maestros\_LayoutMT.cshtml" />
-    <Content Include="Views\Maestros\HomeT.cshtml" />
     <Content Include="Views\Maestros\TPerfil.cshtml" />
     <Content Include="Views\Maestros\MConfiguracion.cshtml" />
+    <Content Include="Views\Maestros\HomeM.cshtml" />
+    <Content Include="Views\Maestros\MPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

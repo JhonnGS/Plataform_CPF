@@ -48,7 +48,7 @@ namespace Plataform_CPF.Controllers
             }
         }
 
-        public ActionResult HomeT(int? mesg, int? id)
+        public ActionResult HomeM(int? mesg, int? id)
         {
             return View();
         }
@@ -59,7 +59,7 @@ namespace Plataform_CPF.Controllers
             return View(usuario.ToList());
         }
 
-        public ActionResult TPerfil(int? id)
+        public ActionResult MPerfil(int? id)
         {
             if (id == null)
             {
@@ -75,13 +75,13 @@ namespace Plataform_CPF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TPerfil([Bind(Include = "idUsuario,usuario,correo,contraseña,perfil,status,TokenRecovery")] Usuarios u)
+        public ActionResult MPerfil([Bind(Include = "idUsuario,usuario,correo,contraseña,perfil,status,TokenRecovery")] Usuarios u)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(u).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("HomeT");
+                return RedirectToAction("HomeM");
             }
             return View(u);
         }
@@ -111,7 +111,7 @@ namespace Plataform_CPF.Controllers
             {
                 db.Entry(m).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("HomeM");
             }
             ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "usuario", m.idUsuario);
             return View(m);
