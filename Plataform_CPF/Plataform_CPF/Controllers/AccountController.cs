@@ -23,11 +23,15 @@ namespace Plataform_CPF.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        //private BDCPFprEntities db = new BDCPFprEntities();       
+        //ESTA ES LA URL DE LA APLICACION ESTA SE CAMBIA CADA QUE SE CORRE EN UN NUEVO SERVIDOR 
+        //EJEMPLO localhost:50601/
+        //DE LO CONTRARIO LA APLICACION PUEDE FALLAR EN MOSTRAR LAS VISTAS CORRESPONDIENTES
         string urlDomain = "http://localhost:53557/";
 
+        //ES UNA INSTANCIA QUE LLAMA A UNA CLASE DE LA CARPETA REPOSITORIO CON LA CUAL HACEMOS COMPARACION DE ELEMENTOS
         private IUsuarioRepository _repoUsuario;
 
+        //ESTA LINEA DE CODIGO ES PARA LLAMAR LOS DATOS DE LA CLASE POR MEDIO DE UN PARAMETRO EN ESPECIAL
         public AccountController(IUsuarioRepository repository)
         {
             _repoUsuario = repository;
@@ -37,7 +41,8 @@ namespace Plataform_CPF.Controllers
         {
 
         }
-
+        //CON EN ESTE METODO CREAMOS LA VISTA DE LA INTERFAZ LOGIN LA CUAL CONTIENE MENSAJES QUE SERAN ENVIADOS
+        //CUANDO LA VISTA SOLICITE DATOS AL MODELO ATRAVEZ DEL CONTROLADOR
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(int? mesg)
@@ -64,6 +69,8 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //AQUI EL METODO POST QUE ES EL METODO DE LA INTERFAZ DEL LOGIN QUE SE ENCARGA DE LA VERIFICACION DEL USUARIO PARA PODER
+        //ENTRAR EN SU SESION IDENTIFICANDO CORREO, CONTRASEÑA Y ESTATUS
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -77,20 +84,25 @@ namespace Plataform_CPF.Controllers
             {
                 using (BDCPFORIEntities db = new BDCPFORIEntities())
                 {
+                    
                     var lst = from d in db.Usuarios
                               where d.correo == E.Trim() && d.contraseña == pass.Trim()
                               select d;
-
+                   
                     Usuarios objUsuario = _repoUsuario.getPorCorreo(E);
+
+                    //AQUI LO QUE HACE ES IDENTIFICAR SI EL USUARIO ES IGUAL A NULO SI LO ES REGRESA AL LOGIN
                     if (objUsuario == null)
                     {
                         return RedirectToAction("Login", "Account", new { mesg = 1 });
 
                     }
+                    //AQUI SI LA CONTRASEÑA ES DIFERENTE 
                     if ((objUsuario.contraseña) != pass)
                     {
                         return RedirectToAction("Login", "Account", new { mesg = 2 });
                     }
+                    //AQUI SI EL ESTATUS ES BLOQUEADO TE RECARGA LA VISTA CON UN MENSAJE DE USUARIO BLOQUEADO
                     if (objUsuario.status == "BLOQUEADO")
                     {
                         return RedirectToAction("Login", "Account", new { mesg = 3 });
@@ -98,6 +110,8 @@ namespace Plataform_CPF.Controllers
 
                     else
                     {
+                        //AQUI LO QUE HACEMOS SI EL USUARIO EXISTE ES CREAR LA SESION QUE LE CORESPONDE DEPENDIEDO EL USUARIO
+                        //QUE INICIO SESION
                         if (objUsuario.perfil == "ALUMNO")
                         {
                             if (lst.Count() > 0)
@@ -114,7 +128,7 @@ namespace Plataform_CPF.Controllers
                             {
                                 Usuarios oUserM = lst.FirstOrDefault();
                                 Session["UserM"] = oUserM.usuario;
-                                return RedirectToAction("HomeT", "Teacher", new { mesg = 0 });
+                                return RedirectToAction("HomeM", "Maestros", new { mesg = 0 });
                             }
                         }
                         if (objUsuario.perfil == "TUTOR")
@@ -141,20 +155,24 @@ namespace Plataform_CPF.Controllers
                             {
                                 Usuarios oUserAD = lst.FirstOrDefault();
                                 Session["UserAD"] = oUserAD.usuario;
-                                return RedirectToAction("HomeAd", "Administrador", new { mesg = 0 });
+                                return RedirectToAction("HomeAD", "Administrador", new { mesg = 0 });
                             }
                         }
                     }
                 }
                 return View(objUser);
             }
+            //CUANDO EL SISTEMA NO RECONOCE LA BD O HAY ALGUN PROBLEMA DE TAL CASO LO QUE HACE ES CAER EN ESTA LINEA DE CODIGO 
+            //PARA DESPUES MANDAR UN MENSAJE DE ERROR
             catch (Exception ex)
             {
                 return Content("Ocurrio un error :(  " + ex.Message);
             }
             return RedirectToAction("Login", "Account");
         }
-
+        
+        //ESTE METODO ES PARA LA OPCION DE RECUPERA CONTRASEÑA ES LA QUE TE CREA LA VISTA PARA INGRESAR TU CORREO
+        //EL CORREO RECIBIRA EL ENLACE PARA IR A LA INTERFAZ EN LA QUE CAMBIAS TU CONTRASEÑA
         [HttpGet]
         [AllowAnonymous]
         public ActionResult StartRecovery()
@@ -163,6 +181,8 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+        //METODO QUE REALIZA LA OPERACION QUE CONSISTE EN IDENTIFICAR EL CORREO Y ENVIAR EL EMAIL A DICHO CORREO
+        //EL CUAL LLEVA EL ENLACE DE LA INTERFAZ DONDE CAMBIARA SU CONTRASEÑA
         [HttpPost]
         [AllowAnonymous]
         public ActionResult StartRecovery(Models.ViewModels.RecoveryViewModel model)
@@ -198,6 +218,7 @@ namespace Plataform_CPF.Controllers
             }
         }
 
+        //METODO GET DE LA VISTA DE RECUPERACION DE CONTRASEÑA
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Recovery(string token)
@@ -220,6 +241,8 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+        //METODO POST QUE SE ENCARGA DE LA IDENTIFICACION DE LA CUENTA, VERIFICA SI EXISTE UN TOKEN DE RECUPERACION
+        //PARA PODER ENVIARTE A LA INTERFAZ DONDE SE CAMBIARA LA CONTRASEÑA
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Recovery(Models.ViewModels.RecoveryPasswordViewModel model)
@@ -255,6 +278,9 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO GET ES DE LA INTERFAZ REGISTRO DE ALUMNO EL CUAL TE PERMITE CREAR DICHA VISTA
+        //DICHO METODO CONTIEN MENSAJES LOS CUALES SE ENVIAN A LA VISTA DEPENDIENDO EL MOVIMIENTO DADO
+        //POR EJEMPLO AL MOMENTO DE SER REGISTRADO LE MANDA UN 1 LA VARIABLE MENSAJE LA CUAL CONTIENE EL MENSAJE DATOS REGISTRADOS
         // GET: /Account/RA
         [AllowAnonymous]
         public ActionResult RA(int? mesg)
@@ -278,6 +304,8 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //EL METODO POST DE LA VISTA DE REGISTRO SE ENCARGA DE RECIBIR LOS DATOS ENVIADOS DE LA VISTA DE REGISTRO PARA SER GUARDADOS EN LA BD
+        //TANTO EN LA TABLA DE USUARIOS COMO LA DE ALUMNO
         // POST: /Account/RA
         [HttpPost]
         [AllowAnonymous]
@@ -340,6 +368,7 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+        //ESTE METODO GET FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // GET: /Account/RM
         [AllowAnonymous]
         public ActionResult RM(int? mesg)
@@ -363,6 +392,7 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO POST FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // POST: /Account/RM
         [HttpPost]
         [AllowAnonymous]
@@ -421,6 +451,7 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+        //ESTE METODO GET FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // GET: /Account/RT
         [AllowAnonymous]
         public ActionResult RT(int? mesg)
@@ -444,6 +475,7 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO POST FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // POST: /Account/RT
         [HttpPost]
         [AllowAnonymous]
@@ -501,6 +533,7 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+        //ESTE METODO GET FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // GET: /Account/RD
         [AllowAnonymous]
         public ActionResult RD(int? mesg)
@@ -524,6 +557,7 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO POST FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // POST: /Account/RD
         [HttpPost]
         [AllowAnonymous]
@@ -583,6 +617,8 @@ namespace Plataform_CPF.Controllers
             return View(model);
         }
 
+       //ESTE METODO GET SE ENCARGA DE CREAR LA VISTA QUE IDENTIFICARA AL ADMINISTRADOR ES PARA EVITAR QUE PASE UN USUARIO INCORRECTO
+       //AL REGISTRO DE ADMINISTRADOR
         // GET: /Account/IdentificarAdmin
         [AllowAnonymous]
         public ActionResult IdentificarAdmin(int? mesg)
@@ -596,6 +632,8 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO POST SE ENCARGA DE VERIFICAR LOS DATOS RECIBIDOS EN CASO DE QUE EL DATO SEA VALIDO TE ENVIA A LA INTERFAZ
+        //DE REGISTRO ADMINNISTRADOR
         //POST: /Account/IdentificarAdmin
         [HttpPost]
         [AllowAnonymous]
@@ -615,6 +653,7 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO GET FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // GET: /Account/RAD
         [AllowAnonymous]
         public ActionResult RAD(int? mesg)
@@ -640,6 +679,7 @@ namespace Plataform_CPF.Controllers
             return View();
         }
 
+        //ESTE METODO POST FUNCIONA IGUAL QUE EL METODO DE REGISTRO ALUMNO SOLO VARIA EN UNOS CAMPOS
         // POST: /Account/RAD
         [HttpPost]
         [AllowAnonymous]
@@ -708,6 +748,7 @@ namespace Plataform_CPF.Controllers
 
 
         #region HELPERS
+        //METODO QUE TE CREA EL TOKEN DE RECUPERACION DE CUENTA
         private string GetSha256(string str)
         {
             SHA256 sha256 = SHA256Managed.Create();
@@ -718,7 +759,7 @@ namespace Plataform_CPF.Controllers
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
         }
-
+         //METODO QUE NOS SIRVE PARA ENVIAR EL CORREO  CON EL ENLACE A LA INTERFAZ DE CAMBIO DE CONTRASEÑA
         private void SendEmail(string EmailDestino, string token)
         {
             string EmailOrigen = "cescuela496@gmail.com";

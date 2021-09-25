@@ -1,0 +1,95 @@
+﻿body1 {
+    background: linear-gradient(45deg, gold, #ffd800 );
+}
+
+bodys {
+    background: linear-gradient(45deg, #33c96c, #139D8D );
+}
+
+.OP2 {
+    align-content: center;
+    text-align: center;
+    color: forestgreen;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .OP2:hover {
+        color: blue;
+    }
+
+.OP3 {
+    align-content: center;
+    text-align: center;
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .OP3:hover {
+        color: green;
+    }
+
+.btnN {
+    align-content: center;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+    .btnN:hover {
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+    }
+
+.bt {
+    align-content: center;
+    background: blue;
+    top: 1px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .bt:hover {
+        background: #ffd800;
+    }
+
+.bt2 {
+    background: gold;
+    top: 1px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .bt2:hover {
+        background: blue;
+    }
+
+.bn3 {
+    background: #ffd800;
+    align-content: center;
+    text-align: center;
+    top: 1px;
+    padding: 4px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+    .bn3:hover {
+        background: blue;
+    }

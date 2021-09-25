@@ -6,29 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Plataform_CPF.Models.ViewModels
 {
-      public class VerifyCodeViewModel
-        {
-            [Required]
-            public string Provider { get; set; }
-
-            [Required]
-            [Display(Name = "Código")]
-            public string Code { get; set; }
-            public string ReturnUrl { get; set; }
-
-            [Display(Name = "¿Recordar este explorador?")]
-            public bool RememberBrowser { get; set; }
-
-            public bool RememberMe { get; set; }
-        }
-
-        public class ForgotViewModel
-        {
-            [Required]
-            [Display(Name = "Correo electrónico")]
-            public string Email { get; set; }
-        }
-
+      //CLASE METODO QUE FUNCIONA COMO UNA TABLA DENTRO DEL SISTEMA DEL CUAL SE LLAMAN SUS PARAMETROS EN UNA VISTA EN ESTE CASO LA VISTA DE LOGUE
+    
         public class LoginViewModel
         {
             [Required]
@@ -44,7 +23,7 @@ namespace Plataform_CPF.Models.ViewModels
             [Display(Name = "¿Recordar cuenta?")]
             public bool RememberMe { get; set; }
         }
-
+    //METODO QUE FUNCIONA COMO UNA TABLA DEL MODELO ES PARA LOS FORMULARIOS DE REGISTRO ALUMNO EN EL SE LLAMAN LOS PARAMETROS COMO EL NOMBRE O EL APP
         public class RegisterViewModel
         {
             [Required(ErrorMessage = "EL CAMPO ES REQUERIDO")]
@@ -91,7 +70,8 @@ namespace Plataform_CPF.Models.ViewModels
 
         }
 
-        public class UserMD
+    //METODO QUE FUNCIONA COMO UNA TABLA DEL MODELO ES PARA LOS FORMULARIOS DE REGISTRO MAESTRO O DIRECTOR
+    public class UserMD
         {
             [Required(ErrorMessage = "EL CAMPO ES REQUERIDO")]
             [Display(Name = "NOMBRE")]
@@ -127,7 +107,8 @@ namespace Plataform_CPF.Models.ViewModels
             public string Seccion { get; set; }
         }
 
-        public class UserAT
+    //METODO QUE FUNCIONA COMO UNA TABLA DEL MODELO ES PARA LOS FORMULARIOS DE REGISTRO ADMINISTRADOR TUTOR
+    public class UserAT
         {
             [Required(ErrorMessage = "EL CAMPO ES REQUERIDO")]
             [Display(Name = "NOMBRE")]
@@ -160,33 +141,5 @@ namespace Plataform_CPF.Models.ViewModels
 
         }
 
-        public class ResetPasswordViewModel
-        {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Correo electrónico")]
-            public string Email { get; set; }
-
-            [Required]
-            [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name = "Contraseña")]
-            public string Password { get; set; }
-
-            [DataType(DataType.Password)]
-            [Display(Name = "Confirmar contraseña")]
-            [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
-            public string ConfirmPassword { get; set; }
-
-            public string Code { get; set; }
-        }
-
-        public class ForgotPasswordViewModel
-        {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Correo electrónico")]
-            public string Email { get; set; }
-        }
 
     }

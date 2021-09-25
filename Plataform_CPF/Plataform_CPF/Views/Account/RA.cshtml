@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "REGISTRO NUEVO ALUMNO";
 }
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -20,7 +21,7 @@
     @using (Html.BeginForm("RA", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "form", @class = "father-form align-center" }))
     {
         @Html.AntiForgeryToken()
-
+        @* MENSAJES QUE SALDRAN DE ENCABEZADO CUANDO HAGA ALGUN MOVIMIENTO COMO DATOS REGISTRADOS*@
         <h2 style="color:blue" class="tiT"> @ViewBag.Message </h2>
         <h3 style="color:blue" class="tiT"> @ViewBag.M</h3>
         <h3 class="tiT"> @ViewBag.Error</h3>
@@ -177,7 +178,7 @@
                 })
             })
         });
-
+        //METODO PARA QUE EL BOTON MOSTRAR CONTRASEÑA MUESTRE LA CONTRASEÑA EN FORMA DE TEXO Y NO DE PUNTOS
         var activadoMostrar = false;
         $('#btn-mostrar-pass').click(function () {
             if (activadoMostrar) {
