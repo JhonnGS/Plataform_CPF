@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title> CPF | MI SESIÒN </title>
+
+    <!-- favicon============================================ -->
+    <link rel="shortcut icon" type="/image/x-icon" href="~/Content/Pal/images/logocpf.svg" alt="" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/startmin/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/startmincss/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/Content/startmin/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/startmin/css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/startmin/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/startmin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    @*<link rel="stylesheet" href="~/Content/Pal/assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="~/Content/Pal/assets/css/noscript.css" /></noscript>*@
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/Directores/HomeD">PLATAFORMA | CPF</a>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul class="nav navbar-nav navbar-left navbar-top-links">
+                <li><a href="~/Home/Index" title="Pagina de Inicio"><i class="fa fa-home fa-fw"></i> Website <img width="25" height="25" src="~/Content/Pal/images/logocpf.svg" alt="" title="Pagina de Inicio" /></a></li>
+            </ul>
+
+            <ul class="nav navbar-right navbar-top-links">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                        @if (Session["UserD"] != null)
+                        {
+                            <text> <i class="fa  fa-hand-spock-o fa-fw"></i> HOLA <i class="fa fa-angellist fa-fw"></i> << @Session["UserD"].ToString() >></text>
+                        }
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="~/Directores/DPerfil/1024 "><i class="fa fa-user fa-fw"></i> PERFIL DE USUARIO</a>
+                        </li>
+                        <li>
+                            <a href="~/Directores/DConfiguracion/1"><i class="fa fa-gear fa-fw"></i> CONFIGURACIÓN</a>
+                        </li>
+                        <li class="divider">
+
+                        </li>
+                        <li>
+                            <a href="~/Directores/CerrarSesion"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <br />
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+
+                        </li>
+                        <li>
+                            <a href="~/" class="active"><i class="fa fa-briefcase fa-fw"></i>MI MOCHILA</a>
+                        </li>
+                        <li>
+
+                        </li>
+                        <li>
+                            <a href="~/"><i class="fa fa-calendar-plus-o fa-fw"></i>CALENDARIO | EVENTOS</a>
+                        </li>
+                        <li>
+                            <a href="~/"><i class="fa fa-edit fa-fw"></i>AGENDA | CREAR EVENTO</a>
+                        </li>
+                        <li>
+                            <a href="~/"><i class="fa fa-wrench fa-fw"></i>HERRAMIENTAS</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> LISTAS DE USUARIOS</a>
+                            <ul class="nav nav-second-level">
+                                @*<li>
+                                        <a href="#">X PERFIL</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">X SECCION</a>
+                                    </li>
+                                    <li>*@
+                                @*<a href="#">REPORTES <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#">CALIFICACIONES</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">X GRADO</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">X GRUPO</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">COMPARACION DE USUARIOS</a>
+                                        </li>
+                                    </ul>*@
+                                <!-- /.nav-third-level -->
+                                @*</li>*@
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <!-- Footer -->
+            <footer id="footer"></footer>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/startmin/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Content/startmin/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/startmin/js/raphael.min.js"></script>
+    <script src="~/Content/startmin/js/morris.min.js"></script>
+    <script src="~/Content/startmin/js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Content/startmin/js/startmin.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
